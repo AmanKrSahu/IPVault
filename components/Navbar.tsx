@@ -3,10 +3,34 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { usePrivy } from "@privy-io/react-auth";
 import { LogIn, LogOut } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Navbar() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { login, logout, authenticated, user } = usePrivy();
+
+  useEffect(() => {
+    if (authenticated && user) {
+      handleUserAuthenticated();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authenticated, user]);
+
+  const handleUserAuthenticated = async () => {
+    if (user && user.wallet?.address) {
+      try {
+        await fetch('/api/user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            address: user.wallet.address,
+            email: user.email?.address || "",
+          }),
+        });
+      } catch (error) {
+        console.error("Error updating user information:", error);
+      }
+    }
+  };  
 
   const handleAuth = () => {
     if (authenticated) {
