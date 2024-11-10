@@ -74,7 +74,7 @@ export default function Home() {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Host your legacy websites like calculators and unit converters on
             the blockchain, absolutely free! No hosting fees, no expiration
-            dates. Preserve your simple web projects forever with HTTP3&apos;s
+            dates. Preserve your simple web projects forever with IPVault&apos;s
             decentralized hosting.
           </p>
           <Link href={"/dashboard"}>
@@ -109,7 +109,7 @@ export default function Home() {
           <DeveloperTools />
         </main>
         <footer className="mt-16 text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 HTTP3. All rights reserved.</p>
+          <p>&copy; 2024 IPVault. All rights reserved.</p>
         </footer>
       </div>
     </ThemeProvider>

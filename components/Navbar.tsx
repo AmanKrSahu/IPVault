@@ -51,7 +51,7 @@ export default function Navbar() {
             height={40}
             priority
           />
-          <span className="ml-2 text-xl font-bold">HTTP3</span>
+          <span className="ml-2 text-xl font-bold">IPVault</span>
         </Link>
         <div className="hidden md:flex items-center space-x-4">
           <Link
