@@ -11,12 +11,14 @@
     "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@neondatabase/serverless": "^0.10.3",
     "@next/env": "^15.0.3",
     "@privy-io/react-auth": "^1.92.8",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
+    "@web3-storage/w3up-client": "^16.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
@@ -28,7 +30,8 @@
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "w3name": "^1.0.8"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",

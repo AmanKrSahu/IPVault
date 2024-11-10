@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { usePrivy } from "@privy-io/react-auth";
 import { LogIn, LogOut } from "lucide-react";
 import { useEffect } from "react";
+import { createOrUpdateUser } from "@/utils/db/actions";
 
 export default function Navbar() {
   const { login, logout, authenticated, user } = usePrivy();
@@ -12,25 +15,21 @@ export default function Navbar() {
     if (authenticated && user) {
       handleUserAuthenticated();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authenticated, user]);
 
   const handleUserAuthenticated = async () => {
     if (user && user.wallet?.address) {
       try {
-        await fetch('/api/user', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            address: user.wallet.address,
-            email: user.email?.address || "",
-          }),
-        });
+        await createOrUpdateUser(
+          user.wallet.address,
+          user.email?.address || ""
+        );
       } catch (error) {
         console.error("Error updating user information:", error);
       }
     }
-  };  
+  };
 
   const handleAuth = () => {
     if (authenticated) {
@@ -46,7 +45,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center">
           <Image
             src="/svg/lock-square-rounded.svg"
-            alt="HTTP3 logo"
+            alt="IPVault logo"
             width={40}
             height={40}
             priority
